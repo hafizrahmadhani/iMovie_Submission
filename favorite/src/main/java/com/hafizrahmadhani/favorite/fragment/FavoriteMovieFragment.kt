@@ -2,15 +2,15 @@ package com.hafizrahmadhani.favorite.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hafizrahmadhani.movie.activity.MovieDetailActivity
 import com.hafizrahmadhani.core.utils.TypeMovie
 import com.hafizrahmadhani.favorite.databinding.FragmentFavoriteMovieBinding
 import com.hafizrahmadhani.favorite.viewmodel.ViewModelFavoriteMovie
+import com.hafizrahmadhani.movie.activity.MovieDetailActivity
 import com.hafizrahmadhani.movie.adapter.MovieAdapter
 import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -82,7 +82,12 @@ class FavoriteMovieFragment : Fragment() {
         }
     }
 
-    companion object{
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.root.removeAllViews()
+    }
+
+    companion object {
         const val extraType = "extra_type"
     }
 }
